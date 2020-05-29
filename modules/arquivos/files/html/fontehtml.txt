@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/estilo.css">
+  <title>Trabalho de Redes II - Grupo 1</title>
+</head>
+
+<body>
+  <header>
+    <div class="div-12">
+      <nav class="div-12">
+        <a class="div-4" href="https://pt.wikipedia.org/wiki/Proxy">PROXY</a>
+        <a class="div-4" href="http://www.squid-cache.org/">SQUID</a>
+        <a class="div-4" href="https://puppet.com/">PUPPET</a>
+        <a class="div-4" href="https://www.vagrantup.com/">VAGRANT</a>
+      </nav>
+    </div>
+    <div class="inline-block">
+      <h1>Universidade Regional do Noroeste do Estado do Rio Grande do Sul</h1>
+      <h1>Trabalho de Redes de Computadores II - Grupo 1</h1>
+      <h1>Proxy</h1>
+    </div>
+  </header>
+  <div class="div-12 center">
+    <div id="div-componentes">
+      <h1>Componentes</h1>
+    </div>
+    <div class="div-perfil div-12 center">
+      <div class="card-perfil">
+        <img class="img-perfil" src="../imagens/user.png">
+        <p class="legenda-componentes">Kassuelo Moreira Okaszeski</p>
+      </div>
+      <div class="card-perfil">
+        <img class="img-perfil" src="../imagens/user.png">
+        <p class="legenda-componentes">Ranieri Breunig da Silva</p>
+      </div>
+      <div class="card-perfil">
+        <img class="img-perfil" src="../imagens/user.png">
+        <p class="legenda-componentes">Vicente Woitchumas Kryszczun</p>
+      </div>
+    </div>
+  </div>
+  <div class="div-12 center ">
+    <div class="div-12 task-description">
+      <h4>Descrição da Atividade</h4>
+      <hr>
+      <p class="justify">
+        1. O que fazer: Disponibilizar um ambiente Linux (VM no virtualbox) com servidor Proxy
+        integrado. Os arquivos devem ser disponibilizados na página do grupo.</br>
+        2. A presente atividade consiste na elaboração e disponibilização de um ambiente de
+        desenvolvimento em Linux Ubuntu (precise64) a partir da utilização do Vagrant com o
+        auxilio do Puppet. Basicamente este ambiente será um maquina virtual Linux (VM) rodando
+        Ubuntu 12.04.5 LTS (precise64) com um servidor Proxy integrado (lembre-se que o projeto é
+        incremental e pode ser usado o modelo exemplo disponibilizado pelo professor ou ainda o
+        box desenvolvido na primeira atividade). É necessário que esteja especificado claramente, a
+        partir de comentários, qual o arquivo que irá conter as regras de filtro do seu servidor proxy.
+        Nesta atividade é aceita um conjunto de regras simples, como por exemplo a restrição do
+        acesso a um determinado site ou mesmo um conjunto de sites. É OBRIGATÓRIO a criação de
+        um arquivo do tipo README para explicar quais filtros/regras foram aplicados. Sugere-se
+        que o proxy trabalhe de forma transparente ou seja todo o tráfego, por exemplo, da eth0
+        porta 80 ou 8080 seja redirecionado para o proxy isto será útil e obrigatório para a próxima
+        atividade. Ainda como estudos avançados, pode-se estender esta tarefa para contemplar o
+        uso de ferramentas administrativas e de análise de logs do servidor Proxy (pode ser usado
+        para melhorar as regras de filtro).
+      </p>
+    </div>
+    <div class="div-12 task-description">
+      <h4>Conhecimentos obtidos nesta atividade:</h4>
+      <hr>
+      <p class="justify">
+        Ao final da execução desta atividade o aluno estará apto a
+        disponibilizar uma VM com um servidor proxy instalado e plenamente
+        configurado com filtros e controle de acesso a Internet a partir da
+        utilização de um servidor Proxy. Reforço a dica de sempre configurar o
+        serviço no box antes, testar e comentar o máximo possível os arquivos
+        de configuração. Estes arquivos devem, posteriormente, ser copiados
+        para a nova VM a ser criada com o auxilio do Vagrant e do Puppet. Não
+        esquecer de adicionar um arquivo do tipo README para explicar o
+        funcionamento da tarefa como forma de auxiliar a correção. Bem como
+        deixar claro isso na página do grupo que será utilizada pelos demais
+        grupos para replicar a configuração.
+      </p>
+    </div>
+    <div class="div-12">
+      <img id="img-proxy" src="../imagens/proxy.png">
+    </div>
+    <div class="div-12 task-description">
+      <h4>Squid Server</h4>
+      <hr>
+      <p class="justify">
+        O objetivo principal de um servidor proxy é possibilitar que máquinas de uma rede privada possam acessar uma
+        rede pública, como a Internet, sem que para isto tenham uma ligação direta com esta. O Servidor proxy costuma
+        ser instalado em uma máquina que tenha acesso direto à internet, sendo que as demais efetuam as solicitações
+        através desta.
+        O Squid é um software completamente livre e com suporte para Windows e linux, a sua principal função é no uso em
+        servidores proxy capazes de suportar HTTP, HTTPS, FTP e vários outros formatos.
+      </p></br>
+      <p class="justify">
+        Com o Squid é possível configurar um servidor em Linux com acesso à internet, e a partir desse servidor
+        permitir que máquinas clientes consigam acessar sites FTP e outras páginas na Web sem necessariamente ter
+        conexão direta com a internet.
+        Esse é um sistema altamente usado em empresas e em corporações onde é necessário um controle maior o acesso das
+        máquinas clientes.
+        Se a página for liberada a pessoa conseguirá ter acesso, caso ela seja bloqueada não será possível utilizar a
+        internet para aquele fim.
+      </p></br>
+      <p class="justify">
+        A principal vantagem do Squid está na possibilidade de armazenar páginas web em cache.
+        Isso quer dizer que o Squid irá armazenar em uma “memória” as páginas mais acessadas, assim ele pode carregar a
+        página para a máquina cliente com muito mais rapidez,pois, não precisa buscar os dados do site na internet novamente. A
+        única configuração necessária na máquina cliente é feita no próprio browser você precisa definir qual o endereço
+        do servidor proxy.      
+      </p></br>
+      <p class="justify">
+        Naturalmente você pode configurar o tempo de armazenamento de cada página no cache, e o protocolo HTTP tem
+        recursos suficientes para reconhecer páginas que não devem ser guardadas no cache, precisando ser buscadas
+        novamente a cada requisição.
+      </p></br>
+    </div>
+    <div class="div-12 task-description">
+      <section class="justify">
+        <h4 id="readme">Implementação do Proxy (README):</h4>
+        <hr>
+        </br>
+        Para a implementação e instalação manual de um proxy baseado em Squid3 é necessária a instalação do Squid3.
+        </br></br>
+        <div class="div-12">
+          <img id="img-squid" src="../imagens/squid.png">
+        </div>
+        </br>
+        Primeiro é executado o comando “sudo apt-get update” e após “sudo apt-get install squid3”.
+        </br></br>
+        Após, recomenda-se fazer um backup do arquivo (squid.conf) de configuração original do Squid3.
+        </br></br>
+        Este procedimento pode ser feito com o comando “sudo cp /etc/squid3/squid.conf /etc/squid3/squid.conf.orig”.
+        </br></br>
+        Para instalação do Squid3 em Puppet é necessário criar dentro do diretório “modules” um subdiretório “squid3” e
+        dentro deste outro subdiretório “manifests” contendo o “init.pp”, para a criação da classe squid3.
+        </br></br>
+        class squid3{</br></br>
+        package {"squid3":</br>
+        ensure=>present,</br>
+        require=> Class["system-update"],</br>
+        }</br></br>
+        <div></div>
+        service {"squid3":</br>
+        ensure=>running,</br>
+        require=> Package["squid3"],</br>
+        }</br>
+        }
+        </br></br>
+        Após é incluído a classe recém criada no “default.pp” , através do comando “include squid3”.
+        </br></br>
+        Para criação do backup do squid.conf original é utilizado o seguinte comando no arquivo “init.pp” do módulo
+        “arquivos.
+        </br></br>
+        exec { "bkp_squid.conf_orig":</br>
+        command => "sudo cp /etc/squid3/squid.conf /etc/squid3/squid.conf.orig",</br>
+        require => Class["squid3"], </br>
+        }
+        </br></br>
+        Os arquivos utilizados como fonte para criação da configuração e das listas de sites proibidos deverão ser
+        criados dentro da pasta contendo os arquivos para implementação da box, no diretório
+        “modules/arquivos/files/squid3/”.
+        </br></br>
+        Para criação dos arquivos necessários para configuração: “squid.conf”, “ban.acl” e “ban_tempo.acl”, deverão ser
+        utilizados os seguintes comandos no arquivo “init.pp” no diretório “modules/arquivos/manifests/”
+        </br></br>
+        file {'/etc/squid3/squid.conf':</br>
+        ensure => file,</br>
+        require => Class["squid3"],</br>
+        subscribe => Exec["bkp_squid.conf_orig"],</br>
+        owner => 'root',</br>
+        group => 'root',</br>
+        mode => '0644',</br>
+        source => 'puppet:///modules/arquivos/squid3/conf.txt',</br>
+        }
+        </br></br>
+        file {'/etc/squid3/ban.acl':</br>
+        ensure => file,</br>
+        require => Class["squid3"],</br>
+        owner => 'root',</br>
+        group => 'root',</br>
+        mode => '0644',</br>
+        source => 'puppet:///modules/arquivos/squid3/ban.txt',</br>
+        }
+        </br></br>
+        file {'/etc/squid3/ban_tempo.acl':</br>
+        ensure => file,</br>
+        require => Class["squid3"],</br>
+        owner => 'root',</br>
+        group => 'root',</br>
+        mode => '0644',</br>
+        source => 'puppet:///modules/arquivos/squid3/ban_tempo.txt',</br>
+        }
+        </br></br>
+        Sendo feita a instalação, backup e a criação de todos os arquivos, é necessário modificar o arquivo squid.conf
+        para que as configurações atendam as suas necessidades.
+        </br>
+        As configurações utilizadas neste trabalho são as seguintes:
+        </br></br>
+        #Arquivo de configuração do squid
+        </br></br>
+        #porta de acesso do proxy, padrão 3128. Paramêtro "transparent" para possibilitar proxy transparente</br>
+        http_port 3128 transparent </br>
+        #hostname que ficará visível</br>
+        visible_hostname Grupo1 </br>
+        </br></br>
+        #diretório das mensagens de erro do squid</br>
+        error_directory /usr/share/squid3/errors/pt-br/</br>
+        #email do gerenciador</br>
+        cache_mgr grupo2@teste.com</br>
+        </br></br>
+        #configuração de cache</br>
+        cache_mem 8 MB </br>
+        cache_swap_low 90</br>
+        cache_swap_high 95</br>
+        #diretório da pasta de armazenamento do cache</br>
+        cache_dir ufs /var/spool/squid3 100 16 256</br>
+        #tamanho máximo do objeto de cache</br>
+        maximum_object_size 30000 KB</br>
+        maximum_object_size_in_memory 40 KB</br>
+        </br></br>
+        #diretório dos arquivos de log</br>
+        access_log /var/log/squid3/access.log squid</br>
+        cache_log /var/log/squid3/cache.log</br>
+        </br></br>
+        #configuração de atualização da cache- configuração recomendada padrão</br>
+        refresh_pattern ^ftp: 1440 20% 10080</br>
+        refresh_pattern ^gopher: 1440 0% 1440</br>
+        refresh_pattern (cgi-bin|\\?) 0 0% 0</br>
+        refresh_pattern . 0 20% 4320</br>
+        quick_abort_max 16 KB</br>
+        quick_abort_pct 95</br>
+        quick_abort_min 16 KB</br>
+        request_header_max_size 20 KB</br>
+        reply_header_max_size 20 KB</br>
+        request_body_max_size 0 KB</br>
+        </br></br>
+        #criação das listas de controle</br>
+        #criação de uma acl com o ip da tua máquina, caso queira libera acesso total para a máquina com esse ip</br>
+        #acl localnet src 192.168.0.0/24</br>
+        </br>
+        #criação de acl para as portas de serviços seguros</br>
+        acl SSL_ports port 443 563</br>
+        acl Safe_ports port 80 # http</br>
+        acl Safe_ports port 21 # ftp</br>
+        acl Safe_ports port 443 563 1863 # https</br>
+        acl Safe_ports port 70 # gopher</br>
+        acl Safe_ports port 210 # wais</br>
+        acl Safe_ports port 1025-65535 # unregistered ports</br>
+        acl Safe_ports port 280 # http-mgmt</br>
+        acl Safe_ports port 488 # gss-http</br>
+        acl Safe_ports port 591 # filemaker</br>
+        acl Safe_ports port 777 # multiling http</br>
+        </br>
+        #criação da acl intervalo do tipo tempo(time). Intervalo todos os dias da 17 às 00</br>
+        acl intervalo time SMTWHFA 17:00-23:59</br>
+        </br>
+        #criação da acl ban a partir do arquivo de sites proibidos</br>
+        acl ban url_regex "/etc/squid3/ban.acl"</br>
+        </br>
+        #criação da acl ban_tempo a partir do arquivo de sites proibidos somente em uma determinado período</br>
+        acl ban_tempo url_regex "/etc/squid3/ban_tempo.acl"</br>
+        </br>
+        #acl para acesso aos arquivos na rede</br>
+        acl CONNECT method CONNECT</br>
+        </br>
+        #nega acesso aos sites presentes na acl ban_tempo</br>
+        http_access deny ban_tempo intervalo</br>
+        #nega acesso ao sites presentes na acl ban</br>
+        http_access deny ban</br>
+        </br>
+        #nega acesso a serviços com portas que não estão nas acls de "Safe_ports"</br>
+        http_access deny !Safe_ports</br>
+        </br>
+        #nega acesso aos arquivos na rede de serviços que não utilizem protocolo SSL</br>
+        http_access deny CONNECT !SSL_ports</br>
+        </br></br>
+        Após terminada a configuração, é necessário executar os seguintes comandos:</br>
+        "sudo squid3 -k reconfigure", para reconfiguração do Squid3 após a modificação do arquivo squid.conf e "sudo
+        service squid3 restart" para reiniciar o serviço após a reconfiguração.</br>
+        </br>
+        Isto é feito no arquivo “default.pp” com os seguintes comandos.</br>
+        </br>
+        exec { "reconfigure_squid":</br>
+        command => "sudo squid3 -k reconfigure",</br>
+        require => Class["squid3"],</br>
+        before => Exec ["restart_squid"],</br>
+        }</br>
+        </br>
+        exec { "restart_squid":</br>
+        command => "sudo service squid3 restart",</br>
+        require => Class["arquivos"],</br>
+        subscribe => Exec["reconfigure_squid"], </br>
+        }</br>
+        </br>
+        Para chegar se o serviço está operacional é possível utilizar o comando “sudo squid3 -z”.</br>
+        </br>
+        Para testar se o proxy está em pleno funcionamento, é necessário configurar no navegador ou nas opções da
+        internet do computador para proxy manual com o seguinte IP: 192.168.33.111 e com a porta 3128. Então, tente
+        acessar um dos sites presentes nas listas de bloqueio, como, por exemplo, facebook.com</br></br>
+      </section>
+    </div>
+    <footer class="div-12">
+      <p>Produzido pelo Curso de Ciencia da Computação - 2020</p>
+      <br><br><br><br><br>
+      <p>Universidade Regional do Noroeste do Estado do Rio Grande do Sul - Unijuí</p>
+    </footer>
+</body>
+
+</html>

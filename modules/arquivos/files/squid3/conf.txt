@@ -1,0 +1,94 @@
+#Arquivo de configuração do squid
+
+
+#porta de acesso do proxy, padrão 3128. Paramêtro "transparent" para possibilitar proxy transparente
+http_port 3128 transparent 
+#hostname que ficará visível
+visible_hostname Grupo1 
+
+#diretório das mensagens de erro do squid
+error_directory /usr/share/squid3/errors/pt-br/
+#email do gerenciador
+cache_mgr grupo2@teste.com
+
+
+#configuração de cache
+cache_mem 8 MB 
+cache_swap_low 90
+cache_swap_high 95
+#diretório da pasta de armazenamento do cache
+cache_dir ufs /var/spool/squid3 100 16 256
+#tamanho máximo do objeto de cache
+maximum_object_size 30000 KB
+maximum_object_size_in_memory 40 KB
+
+
+#diretório dos arquivos de log
+access_log /var/log/squid3/access.log squid
+cache_log /var/log/squid3/cache.log
+
+
+
+
+
+
+
+#configuração de atualização da cache- configuração recomendada padrão
+refresh_pattern ^ftp:           1440    20%     10080
+refresh_pattern ^gopher:        1440    0%      1440
+refresh_pattern (cgi-bin|\\?)    0       0%      0
+refresh_pattern .               0       20%     4320
+quick_abort_max 16 KB
+quick_abort_pct 95
+quick_abort_min 16 KB
+request_header_max_size 20 KB
+reply_header_max_size 20 KB
+request_body_max_size 0 KB
+
+
+
+
+#criação das listas de controle
+#criação de uma acl com o ip da tua máquina, caso queira libera acesso total para a máquina com esse ip
+#acl localnet src 192.168.0.0/24
+
+#criação de acl para as portas de serviços seguros
+acl SSL_ports port 443 563
+acl Safe_ports port 80 # http
+acl Safe_ports port 21 # ftp
+acl Safe_ports port 443 563 1863 # https
+acl Safe_ports port 70 # gopher
+acl Safe_ports port 210 # wais
+acl Safe_ports port 1025-65535 # unregistered ports
+acl Safe_ports port 280 # http-mgmt
+acl Safe_ports port 488 # gss-http
+acl Safe_ports port 591 # filemaker
+acl Safe_ports port 777 # multiling http
+
+#criação da acl intervalo do tipo tempo(time). Intervalo todos os dias da 17 às 23:59
+acl INTERVALO time SMTWHFA 18:00-23:59
+
+#criação da acl ban a partir do arquivo de sites proibidos
+acl ban  url_regex "/etc/squid3/ban.acl"
+
+#criação da acl ban_tempo a partir do arquivo de sites proibidos somente em uma determinado período
+acl ban_tempo url_regex "/etc/squid3/ban_tempo.acl"
+
+#acl para acesso aos arquivos na rede
+acl CONNECT method CONNECT
+
+#nega acesso aos sites presentes na acl ban_tempo
+http_access deny ban_tempo INTERVALO
+#nega acesso ao sites presentes na acl ban
+http_access deny ban
+
+
+
+#nega acesso a serviços com portas que não estão nas acls de "Safe_ports"
+http_access deny !Safe_ports
+
+#nega acesso aos arquivos na rede de serviços que não utilizem protocolo SSL
+http_access deny CONNECT !SSL_ports
+
+
+
