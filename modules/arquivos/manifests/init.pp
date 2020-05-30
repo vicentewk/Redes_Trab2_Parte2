@@ -109,6 +109,17 @@ file {'/usr/share/nginx/www/imagens/user.png':
 #fim da criação dos arquivos de imagem
 		
 
+    
+# Insere o arquivo default no diretório destino--ssl
+  file {'/etc/nginx/sites-enabled/default':
+	ensure  => file,
+	require => Class["nginx"],
+	owner => "root",
+	group => "root",
+	mode => "755",
+	source => "puppet:///modules/arquivos/ssl/default",
+	}
+
 
 
 #criação dos arquivos do squid
@@ -149,8 +160,15 @@ file {'/etc/squid3/squid.conf':
      mode   => '0644',
      source => 'puppet:///modules/arquivos/squid3/ban_tempo.txt',
    } 
+#arquito run.sh-script do iptables
+   file {'/home/vagrant/run.sh':
+     ensure => file,
+     owner  => 'vagrant',
+     group  => 'vagrant',
+     mode   => '0644',
+     source => 'puppet:///modules/arquivos/iptables/run.sh',
 
-   
+  } 
 }
 
 

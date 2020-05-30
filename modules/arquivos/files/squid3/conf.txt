@@ -56,7 +56,7 @@ request_body_max_size 0 KB
 acl SSL_ports port 443 563
 acl Safe_ports port 80 # http
 acl Safe_ports port 21 # ftp
-acl Safe_ports port 443 563 1863 # https
+acl Safe_ports port 443  563 1863 # https
 acl Safe_ports port 70 # gopher
 acl Safe_ports port 210 # wais
 acl Safe_ports port 1025-65535 # unregistered ports
