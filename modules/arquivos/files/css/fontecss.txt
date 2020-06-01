@@ -35,6 +35,9 @@ nav {
 .center {
     text-align: center;
 }
+.left {
+    text-align: left;
+}
 
 .justify {
     text-align: justify;
@@ -50,10 +53,15 @@ nav a {
     vertical-align: middle;
     text-align: center;
     text-decoration: none;
+    color: white;
 }
 
-nav a {
-    color: white;
+#redme-menu a{
+    color: black;
+}
+#redme-menu a:hover{
+
+    color: rgb(82, 82, 82);
 }
 
 nav a:hover {
@@ -153,6 +161,7 @@ nav a:hover {
     display: inline-block;
     width: 33%;
     text-align: center;
+    vertical-align: top;
 }
 
 .div-4 {
@@ -196,6 +205,10 @@ footer {
     width: 80%;
     margin-top: 50px;
     line-height: 30px;
+}
+
+.readme_menu{
+    background: lightgrey;
 }
 
 

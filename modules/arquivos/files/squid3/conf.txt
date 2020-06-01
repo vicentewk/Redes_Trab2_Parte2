@@ -9,7 +9,7 @@ visible_hostname Grupo1
 #diretório das mensagens de erro do squid
 error_directory /usr/share/squid3/errors/pt-br/
 #email do gerenciador
-cache_mgr grupo2@teste.com
+cache_mgr grupo1@teste.com
 
 
 #configuração de cache

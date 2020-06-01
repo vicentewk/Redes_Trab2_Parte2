@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/estilo.css">
+  <title>Trabalho de Redes II - Grupo 4</title>
+</head>
+
+<body>
+  <header>
+    <div class="div-12">
+      <nav class="div-12">
+        <a class="div-4" href="https://pt.wikipedia.org/wiki/Proxy">PROXY</a>
+        <a class="div-4" href="http://www.squid-cache.org/">SQUID</a>
+        <a class="div-4" href="https://puppet.com/">PUPPET</a>
+        <a class="div-4" href="https://www.vagrantup.com/">VAGRANT</a>
+      </nav>
+    </div>
+    <div class="inline-block">
+      <h1>Universidade Regional do Noroeste do Estado do Rio Grande do Sul</h1>
+      <h1>Trabalho de Redes de Computadores II - Grupo 4</h1>
+      <h1>Nginx - HTTPS</h1>
+    </div>
+  </header>
+  
+  <div class="div-12 center ">
+    <div class="div-12 task-description">
+      <section class="justify">
+        <h4 id="readme">Implementação do Nginx - HTTPS (README):</h4>
+        <hr>
+        </br>
+        
+        <div class="div-12">
+          <img id="img-squid" src="../imagens/nginx_https.jpg">
+        </div>
+        </br>
+        <h4>Vantagens e Desvantagens</h4>
+		<div>
+			O servidor Apache é distribuído para diversas plataformas e também é dito como um dos mais seguros, podendo ser estudado e modificado através de seu código por qualquer pessoa. Possui uma configuração descentralizada, é gratuito, código aberto, tem flexibilidade, desempenho mesmo com pouco recurso de hardware, compatibilidade com sistemas e plataformas, configuração de módulos para melhor processamento, mas as desvantagens são que os bugs podem comprometer a estabilidade do servidor, pode ocorrer de não corresponder muito bem ao processar requisitos simultaneamente e não há suporte dedicado.			
+		</div>
+		<div>
+			Nginx é um servidor gratuito, com alta performance. Tem uma arquitetura orientada a eventos e foi criado para resolver a baixa capacidade dos servidores em processar determinados números de requisitos ao mesmo tempo. Este tem configuração centralizada, tem ênfase em desempenho, baixo consumo de recursos de hardware, segurança, facilmente customizável, código aberto, execução de módulos PHP separados do servidor WEB, evitando que o servidor venha a travar, mas as desvantagens são que há baixa flexibilidade, não há suporte dedicado e o módulo não é dinâmico. 	
+		</div>
+		<div>
+			Ambos podem ser adquiridos pré-configurados, sendo a configuração do Nginx relativamente mais fácil de usar para iniciantes. Em questão de arquitetura, o Apache permite a configuração dos módulos conforme sua necessidade, diferente do Nginx, que com a configuração padrão garante ênfase em extrair melhor a performance do hardware. Os módulos do Apache são mais flexíveis e dinâmicos, já no Nginx, não há isso, pois faz necessárias a seleção e compilação dos módulos no software primário. Nginx foi projetado para simples configurações e baixo uso de recursos, enquanto Apache possui uma ampla documentação e uma excelente configuração de módulos, ambos proporcionam segurança e desempenho, se devidamente configurados. 	
+		</div>
+		<br>
+
+		<h4>Conclusão: Qual servidor é melhor?:</h4>
+		<div>
+			Nginx utiliza uma arquitetura orientada a eventos e pode atender à várias conexões ao mesmo tempo, o que permite a uma máquina razoável suportar uma grande carga de requisitos simultâneos. Já o Apache cria um novo processo ou thread para cada conexão nova, sendo mais indicado para customizar conexões, enquanto Nginx para receber muito tráfego. O Nginx pode fazer um consumo mais eficiente dos recursos da máquina, consumindo menos RAM, sendo neste caso superior ao Apache. Se for escolher a melhor opção de servidor web em relação a desempenho, o Nginx se mostra mais eficaz. 
+		</div>
+		<div>
+			Conforme a comparação de características entre o Nginx e o Apache, (NEDELCU, 2013), é possível observar algumas condições entre ambos: 
+		</div>
+		<div>
+			Nginx: orientado a eventos, linguagem C, sistema de módulos estático (cada módulo deve ser habilitado ou desabilitado durante a compilação).
+		</div>
+		<div>
+			Apache: sockets, threads e processos síncronos, vários módulos em linguagem C++, sistema de módulos dinâmico (permite que os módulos sejam habilitados e desabilitados por meio de arquivos de configuração).
+		</div>
+		<div>
+			Ambos são multiplataformas, possuem suporte através de módulos e suportados nativamente.
+		</div>
+		<div>
+			Com todas as informações adquiridas, concluímos que o Nginx consegue proporcionar um melhor desempenho e atendimento de várias requisições simultâneas e tem permitido manter um servidor com menos custo e maior resposta à demanda de crescimento.	
+		</div>
+		<br>
+
+    <h4>HTTPS:</h4>
+		<div>
+			A extensão segura do HTTP é o HTTPS, sites podem o utilizar para estabelecer uma comunicação segura com o servidor, configurando um certificado SSL/TLS.
+		</div>
+		<br>
+
+    <h4>SSL/TLS:</h4>
+		<div>
+			São protocolos de criptografia que proporcionam a segurança na hora de transmitir dados entre aplicativos e servidores.<br>
+			Para identificar se o site utiliza certificado SSL/TLS, basta conferir se o mesmo tem um cadeado próximo à URL no navegador.
+
+		</div>
+		<br>
+
+		<h4>Funcionamento:</h4>
+		<div>
+			SSL/TLS funcionam através das chaves públicas e privadas, além das chaves de sessão para cada conexão segura. Durante a primeira conexão, as chaves são utilizadas para criar uma chave de sessão, utilizada para criptografar os dados que estão sendo transferidos. Essa se mantém válida por tempo limitado e só pode ser usada para essa sessão. 
+		</div>
+		<br>
+
+    <h4>Comparação:</h4>
+		<div>
+			Por conta da maioria dos browsers modernos não mais suportar SSL, o TLS se tornou mais eficiente, também sendo o mais seguro. SSL utiliza apenas o algoritmo MAC (Message Authentication Code), enquanto TLS pode operar em portar distintas e usa algoritmos de criptografia que são mais fortes, como o Keyed — Hashing for Message Authentication Code (HMAC). O TLS é como uma versão mais segura do SSL, pois corrige algumas vulnerabilidades de segurança. 
+		</div>
+		<br>
+
+
+		<h4>O Provisionamento:</h4>
+		<div>
+			Para começar, este provisionamento foi organizado por diretórios. 
+			"Vagrant" - "Manifests" - "Modules". <br><br>
+
+			No diretório <b>Vagrant</b> está presente o arquivo <i>loader.rb</i>, tal qual faz o carregamento dos aquivos necessários para que o Vagrant possa ser executado corretamente.<br><br>
+
+			No <b>Manifests</b>, se encontra o arquivo <i>default.pp</i>, que será o primeiro arquivo a ser executado pelo Vagrant. Ele indica o caminho a ser executado: <br>
+			"<i>Exec { path => [ "/usr/bin:/usr/sbin:/bin:/usr/local/bin:/usr/local/sbin:/sbin" ] }</i>";<br>
+			Cria os certificados e chave primária para a configuração do HTTPS;<br>
+			e instala os pacotes: system-update; nginx; e arquivos.
+			<br><br>
+
+			Já no diretório <b>Modules</b>, são encontrados 3 diretórios:<br>
+			"Nginx" - "Arquivos" - "System-update". <br>
+
+			&nbsp;&nbsp;&nbsp;&nbsp;No Nginx, o arquivo <i>init.pp</i> contém o pacote de atualização, e através dele o servidor Nginx é inicializado.<br>
+
+			&nbsp;&nbsp;&nbsp;&nbsp;No diretório Arquivos há dois outros diretórios, "Files" e "Manifests".<br>
+			<ul>
+				<li>No Files, a presente página <i>index.html</i> e <i>default</i> - para a configuração do HTTPS - estão contidas;</li>
+				<li>E no Manifests, o arquivo <i>init.pp</i>, tal qual inicia a página <i>index.html</i>, está presente.</li>
+			</ul>
+			E, por fim, no ditetório System-update, há um arquivo <i>init.pp</i> que faz a atulização, quando necessária.<br><br><br>
+
+			Além de todos estes diretórios, há ainda um arquivo <i>Vagrantfile</i>, tal qual configura:
+			<ul>
+				<li>A máquina virtual;</li>
+				<li>O box (<i>precise64</i>);</li>
+				<li>O tipo de rede e o IP;</li>
+				<li>E o Puppet.</li>
+			</ul>
+		</div>
+		<br>
+
+		<div>
+			Em relação a configuração do HTTPS, a mesma será realizada em 5 passos.<br><br>
+
+
+			<b>1º Escolher qual tipo de certificado será usado:</b><br><br>
+
+
+			Neste ponto temos duas opções de escolha: o SSL e TLS. Neste provisionamento foi utilizado o SSL, pois é um tipo de certificado que possui muita documentação, e já é utilizado há muito tempo. O TLS também pode ser uma boa escolha, por ser mais atual.<br><br>
+
+			<b>2º Criar uma chave primária e o certificado CRS:</b><br><br>
+
+			O domínio da página em questão foi nomeado como “localhost” por padrão, e será utilizado nos procedimentos a seguir. Para a criação da chave e do certificado, já no diretório desejado, utilize o seguinte comando:<br><br>
+			<i><b>openssl req -nodes -newkey rsa:2048 -keyout localhost.key -out localhost.csr -subj \"/C=BR/ST=RS/L=Ijui/O=Unijui/OU=DCEEng/CN=localhost.com\"</b></i><br><br>
+			No momento da criação da chave e do certificado, são solicitadas as seguintes informações:<br><br>
+			Country Name (2 letter code) [AU]: <b>BR</b><br>
+			State or Province Name (full name) [Some-State]: <b>RS</b><br>
+			Locality Name (eg, city) []: <b>Ijui</b><br>
+			Organization Name (eg, company) [Internet Widgits Pty Ltd]: <b>Unijui</b><br>
+			Organizational Unit Name (eg, section) []: <b>DCEEng</b><br>
+			Common Name (e.g. server FQDN or YOUR name) []: <b>localhost.com</b><br><br>
+
+			Por este motivo, a expressão<br><i><b>-subj \"/C=BR/ST=RS/L=Ijui/O=Unijui/OU=DCEEng/CN=localhost.com\"</b></i> foi adicionada ao comando.<br>
+
+			Este comando irá gerar dois arquivos: <i><b>localhost.csr</b></i> (que posteriormente deve ser enviado para o CA em questão, para que seja requisitado o certificado SSL) e <i><b>localhost.key</b></i> é a sua chave privada, e deve ser armazenado da maneira mais segura possível, para que este não caia em mãos erradas.<br><br>
+
+			<b>3º Criação do CA (Certificado de Autoridade):</b><br><br>
+
+			Este é o último arquivo a ser criado para a configuração do HTTPS, e deverá ser usado o seguinte comando para fazê-lo:<br><br>
+
+			<i><b>sudo openssl x509 -req -days 365 -in localhost.csr -signkey localhost.key -out localhost.crt</b></i><br><br>
+
+			Este comando irá criar o arquivo localhost.crt no diretório atual, portanto deve ser executado no mesmo diretório dos outros dois arquivos.<br><br>
+
+			<b>4º Configurar o arquivo default do HTTPS:</b><br><br>
+
+			Neste passo, será necessário localizar o arquivo default no seguinte diretório do Nginx:<br><br>
+			<i><b>/etc/nginx/sites-enabled</b></i><br><br>
+			E então configurá-lo da seguinte maneira:<br><br>
+
+			<i><b>	
+			# HTTPS server<br>
+			server {<br>
+			listen 443 ssl;<br>
+			server_name localhost;<br>
+			root /usr/share/nginx/www;<br>
+			index index.html index.htm;<br>
+			ssl_certificate /home/vagrant/localhost.crt;<br>
+			ssl_certificate_key /home/vagrant/localhost.key;<br>
+			}<br>
+			</b></i><br>
+
+			No qual será configurada a diretiva listen para o SSL, e serão apontados os arquivos dos certificados e da chave criados anteriormente.<br><br>
+
+			<b>5º Resetar o Nginx:</b><br><br>
+			O último passo é resetar o Nginx, para que as atualizações e configurações realizadas possam ser instaladas na máquina virtual. O comando utllizado foi: <br><br>
+			<i><b>sudo service nginx restart</b></i><br><br>
+			É importante lembrar que, para a criação do CA, já devem estar criados o CSR e a chave primária. E para resetar o Nginx todos os arquivos já devem ter sido criados e o default configurado. Portanto para a execução destes comandos, os procedimentos anteriores devem estar prontos.<br><br>
+
+			Desta forma, o certificado SSL estará ativado para o domínio!<br><br><br>
+
+		</div>	
+
+		</div>
+      </section>
+    </div>
+    <footer class="div-12">
+      <p>Produzido pelo Curso de Ciencia da Computação - 2020</p>
+      <br><br><br><br><br>
+      <p>Universidade Regional do Noroeste do Estado do Rio Grande do Sul - Unijuí</p>
+    </footer>
+</body>
+
+</html>

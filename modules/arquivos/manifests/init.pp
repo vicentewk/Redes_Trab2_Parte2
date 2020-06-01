@@ -30,7 +30,46 @@ file {'/usr/share/nginx/www/index.html':
      mode   => '0644',
      source => 'puppet:///modules/arquivos/html/fontehtml.txt',
    } 
+#criação do arquivo da página do iptables
+   file {'/usr/share/nginx/www/iptables.html':
+     ensure => file,
+     require => Class["nginx"],
+     owner  => 'root',
+     group  => 'root',
+     mode   => '0644',
+     source => 'puppet:///modules/arquivos/html/iptables.txt',
+   } 
 
+   #criação do arquivo da página do nginx_https
+   file {'/usr/share/nginx/www/nginx_https.html':
+     ensure => file,
+     require => Class["nginx"],
+     owner  => 'root',
+     group  => 'root',
+     mode   => '0644',
+     source => 'puppet:///modules/arquivos/html/nginx_https.txt',
+   } 
+
+     #criação do arquivo da página do postfix
+   file {'/usr/share/nginx/www/postfix.html':
+     ensure => file,
+     require => Class["nginx"],
+     owner  => 'root',
+     group  => 'root',
+     mode   => '0644',
+     source => 'puppet:///modules/arquivos/html/postfix.txt',
+   } 
+
+
+     #criação do arquivo da página do squid
+   file {'/usr/share/nginx/www/squid.html':
+     ensure => file,
+     require => Class["nginx"],
+     owner  => 'root',
+     group  => 'root',
+     mode   => '0644',
+     source => 'puppet:///modules/arquivos/html/squid.txt',
+   } 
 
 
 #criação do arquivo de estilos css
@@ -105,6 +144,33 @@ file {'/usr/share/nginx/www/imagens/user.png':
      group  => 'root',
      mode   => '0644',
      source => 'puppet:///modules/arquivos/imagens/squid_banner.jpg',
+   } 
+
+     file {'/usr/share/nginx/www/imagens/firewall.jpg':
+     ensure => file,
+     require => Class["nginx"],
+     owner  => 'root',
+     group  => 'root',
+     mode   => '0644',
+     source => 'puppet:///modules/arquivos/imagens/firewall.jpg',
+   } 
+
+    file {'/usr/share/nginx/www/imagens/nginx_https.jpg':
+     ensure => file,
+     require => Class["nginx"],
+     owner  => 'root',
+     group  => 'root',
+     mode   => '0644',
+     source => 'puppet:///modules/arquivos/imagens/nginx_https.jpg',
+   } 
+
+    file {'/usr/share/nginx/www/imagens/postfix.jpg':
+     ensure => file,
+     require => Class["nginx"],
+     owner  => 'root',
+     group  => 'root',
+     mode   => '0644',
+     source => 'puppet:///modules/arquivos/imagens/postfix.jpg',
    } 
 #fim da criação dos arquivos de imagem
 		

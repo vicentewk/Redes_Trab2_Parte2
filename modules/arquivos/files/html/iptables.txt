@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/estilo.css">
+  <title>Trabalho de Redes II - Grupo 1</title>
+</head>
+
+<body>
+  <header>
+    <div class="div-12">
+      <nav class="div-12">
+        <a class="div-4" href="https://pt.wikipedia.org/wiki/Proxy">PROXY</a>
+        <a class="div-4" href="http://www.squid-cache.org/">SQUID</a>
+        <a class="div-4" href="https://puppet.com/">PUPPET</a>
+        <a class="div-4" href="https://www.vagrantup.com/">VAGRANT</a>
+      </nav>
+    </div>
+    <div class="inline-block">
+      <h1>Universidade Regional do Noroeste do Estado do Rio Grande do Sul</h1>
+      <h1>Trabalho de Redes de Computadores II - Grupo 3</h1>
+      <h1>Firewall - IPTables</h1>
+    </div>
+  </header>
+
+  <div class="div-12 center ">
+    <div class="div-12 task-description">
+      <section class="justify">
+        <h4 id="readme">Implementação do Firewall - IPTables (README):</h4>
+        <hr>
+        </br></br>
+        <div class="div-12">
+          <img id="img-squid" src="../imagens/firewall.jpg">
+        </div>
+        </br></br>
+        <h4 id="readme">O que é IPTalbes</h4>
+        </br>
+        De acordo com a singela descrição do criador desse pacote ( NetFilter), o Iptables é uma
+        ferramenta para criar e administrar regras e assim filtrar pacotes de redes.
+        <br>
+        O iptables pode funcionar baseado no endereço, porta de origem, destino do pacote, prioridade.
+        Ele funciona através da comparação de regras para saber se um pacote tem ou não permissão para
+        passar. Em firewalls mais restritivos, o pacote é bloqueado e registrado para que o
+        administrador do sistema tenha conhecimento sobre o que está acontecendo em seu sistema.
+        </br></br></br>
+        <h4 id="readme">Como funciona</h4>
+        </br>
+        A função primária do iptables é fazer a análise do tráfego de redes recebido pelo computador, no
+        qual é feita uma comparação com o conjunto de regras preestabelecidas nas configurações.
+        <br>
+        Ou seja, ele inspeciona todos os pacotes, verifica o enquadramento de cada um às regras e aplica uma
+        determinada ação. O processamento dos pacotes é feito pelo iptables a partir de uma estrutura que
+        contém suas camadas (tabelas) e cadeias (chains).
+        <br>
+        Portanto, compreender a estrutura do iptables é um fundamento que pode contribuir para chegar a
+        melhor especificação das regras de firewall.
+        </br></br></br>
+        <h4 id="readme">Modo de usar</h4>
+        </br>
+        <div class="div-3">
+          A forma mais comum de se usar o comando é:
+          <br>
+          <br>
+          <b> iptables [-t table] <opção> chain rule-specification</b>
+          <br>
+          <br>
+          Cada um tem o seu uso específico, e uma forma de usar. Para consultar todas basta utilizar:
+          <br>
+          <br>
+          <b> man iptables</b>
+        </div>
+        <div class="div-3">
+          Entre as opções você pode usar: <br>
+          -P = Define uma regra padrão;
+          <br>
+          -A = Adiciona uma nova regra as existentes. Este tem prioridade sobre a -P;
+          <br>
+          -D = Apaga uma regra;
+          <br>
+          -L = Lista as regras existentes;
+          <br>
+          -S = Lista as regras existentes, da forma como foi salvo pelo iptables;
+          <br>
+          -E = Renomeia uma cadeia(chain)
+          <br>
+          -F = Limpa todas as regras;
+          <br>
+          -I = Insere uma nova regra;
+          <br>
+          -h = Exibe a ajuda;
+          <br>
+          -R = Substitui uma regra;
+          <br>
+          -C = Faz a checagem das regras existentes;
+          <br>
+          -Z = Zera uma regra específica;
+          <br>
+          -N = Cria uma nova regra com um nome;
+          <br>
+          -X = Exclui uma regra específica pelo seu nome.
+        </div>
+        <div class="div-3">
+          Comandos comuns do iptables
+          <br>
+          Deletar regra
+          <br>
+          <b>iptables -F</b>
+          <br>
+          <br>
+          Bloquear um IP
+          <br>
+          <b>iptables -A INPUT -s "192.168.254.10" -j DROP</b>
+          <br>
+          <br>
+          Se desejar bloquear para uma interface específica, basta passar o parâmetro -i , fincando assim:
+          <br>
+          <b>iptables -A INPUT -i eth0 -s "192.168.254.10" -j DROP</b>
+          <br>
+          <br>
+          Listar todas as regras e seus itendificadores
+          <br>
+          <b>iptables -L -v -n --line-number</b>
+          <br>
+        </div>
+        </br></br></br>
+        <h4 id="readme">Passo a passo para provisionar</h4>
+        </br>
+        Para realizar o provisionamento do box, será necessário copiar os dados da máquina e rodar o comando "vagrant
+        up" dentro do diretório copiado.<br>
+        Aguardar a máquina ser iniciada, conectar à ela utilizando o comando "vagrant ssh".<br>
+        Assim que conectado, realizar o teste dos serviços.
+        </br></br></br>
+
+      </section>
+    </div>
+    <footer class="div-12">
+      <p>Produzido pelo Curso de Ciencia da Computação - 2020</p>
+      <br><br><br><br><br>
+      <p>Universidade Regional do Noroeste do Estado do Rio Grande do Sul - Unijuí</p>
+    </footer>
+</body>
+
+</html>
