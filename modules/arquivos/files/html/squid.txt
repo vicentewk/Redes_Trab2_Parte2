@@ -209,6 +209,8 @@
         Para testar se o proxy está em pleno funcionamento, é necessário configurar no navegador ou nas opções da
         internet do computador para proxy manual com o seguinte IP: 192.168.33.111 e com a porta 3128. Então, tente
         acessar um dos sites presentes nas listas de bloqueio, como, por exemplo, facebook.com</br></br>
+      Para testar dentro da box é necessário utilizar o comando "export http_proxy=http://192.168.33.111:3128" 
+      e após utilizar o comando "lynx url.com.br"</br>
       </section>
     </div>
     <footer class="div-12">

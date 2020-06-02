@@ -28,139 +28,24 @@
   <div class="div-12 center ">
     <div class="div-12 task-description">
       <section class="justify">
-        <h4 id="readme">Implementação do E-mail - Postfix (README):</h4>
-        <hr></br>
-        <div class="div-12">
-          <img id="img-squid" src="../imagens/postfix.jpg">
-        </div>
-        <h4>Estrutura de arquivos:</h4>
-        <p>
-          <br>
-          ├── manifests <br>
-          │   └── default.pp <br>
-          ├── modules <br>
-          │   ├── arquivos <br>
-          │   │   ├── files <br>
-          │   │   │   └── index.html <br>
-          │   │   └── manifests <br>
-          │   │   └── init.pp <br>
-          │   ├── links <br>
-          │   │   └── manifests <br>
-          │   │   └── init.pp <br>
-          │   ├── mailutils <br>
-          │   │   └── manifests <br>
-          │   │   └── init.pp <br>
-          │   ├── mutt <br>
-          │   │   └── manifests <br>
-          │   │   └── init.pp <br>
-          │   ├── nginx <br>
-          │   │   └── manifests <br>
-          │   │   └── init.pp <br>
-          │   ├── postfix <br>
-          │   │   ├── files <br>
-          │   │   │   ├── main.cf <br>
-          │   │   │   └── virtual <br>
-          │   │   └── manifests <br>
-          │   │   ├── config.pp <br>
-          │   │   ├── init.pp <br>
-          │   │   ├── install.pp <br>
-          │   │   └── service.pp <br>
-          │   ├── system-update <br>
-          │   │   └── manifests <br>
-          │   │   └── init.pp <br>
-          │   └── user <br>
-          │   ├── files <br>
-          │   │   └── createUser.sh <br>
-          │   └── manifests <br>
-          │   └── init.pp <br>
-          ├── tutorial.txt <br>
-          └── Vagrantfile <br>
-        </p>
-        </br></br>
-        <h3>Classes:</h3>
-        <p>
-          arquivos:<br>
-          faz a copia do arquivo de pagina web.
-        </p>
-        <p>
-          links:<br>
-          instala o navegador por terminal links.
-        </p>
-        <p>
-          mailutils:<br>
-          instala o pacote mailutils, usado principalmente para testes sobre o postfix.
-        </p>
-        <p>
-          mutt:<br>
-          cliente de email utilizado.
-        <p>
-        <p>
-          nginx:<br>
-          sevidor web utilizado.
-        </p>
-        <p>
-          postfix:<br>
-          Gerenciador de email, para melhor organização a classe foi divididade em 3 sub classes(install, config e
-          service)
-        <ul>
-          <li>
-            -postfix::install:<br>
-            instala o pacote postfix.
-          </li>
-          <li>
-            -postfix::config: <br>
-            substitui os arquivos de configuração necessarios para execução do postfix. <br>
-            <ul>
-              <li>-main.cf: base da configuração do postfix, os principais atributos que podem vir a ser modificados
-                são:
-                <ul>
-                  <li>myhostname: conta que recebera email endereçados a "root@"</li>
-                  <li>mydestination:detinos de emails que o servidor postfix aceitará receber</li>
-                  <li>mailbox_size_limit:usado para limitar o tamanho das mensagens, 0 desativa a restrição de tamanho
-                  </li>
-                  <li>mynetworks:lista das redes para as quais seu servidor de e-mail está configurado para retransmitir
-                    as mensagens.</li>
-                </ul>
-              </li>
-              <li>
-                -virtual: mapea o endereço virtual para as contas apropriadas do servidor, cada linha contem um endereço
-                de email seguida de um espaço e o usuario para o qual o email deve ser entregue
-              </li>
-            </ul>
-          </li>
-          <li>
-            -postfix::service <br>
-            garante que o serviço está rodando e foi reiniciado <br>
-          </li>
-        </ul>
-        </p>
-
-        <p>
-          system-update: <br>
-          instala e garante a execução do system-update <br>
-        </p>
-        <p>
-          user: <br>
-          copia um arquivo ssh para a maquina e o executa <br>
-          -createUser: <br>
-          "sudo useradd -m -g users -p asdf X" cria um usuario "X" com uma senha criptografada "asdf" <br>
-          "sudo usermod -p $(openssl passwd -1 x) X" modifica a senha do usuario "X" para x <br>
-        </p>
+        
 
         </br></br>
         <h4>Para enviar um email</h4>
         <p>
+        Os usuários são criados no arquivo "virtual" no diretório /etc/postfix/virtual.
+        <br>Foram criados para teste os usuários:kassuelo, ranieri e vicente, sendo a senha o prório usuário.
           <br>
-          basta acessar um usuario:<br>
+          Basta acessar um usuario:<br>
           <br>
-          $ssh diogo@localhost <br>
+          $ssh user@localhost <br>
           yes <br>
-          diogo <br>
+          user <br>
           <br>
           Digite "mutt" no terminal para abrir o client de email<br>
           <br>
           Ao abrir o Mutt pela primeira vez, será necessário criar o cache para armazenar os emails. <br>
-          /home/diogo/Mail does not exist. Create it? <b>Yes</b> <br>
+          /home/user/Mail does not exist. Create it? <b>Yes</b> <br>
           <br>
           Aperte M para digitar o destinatario (então pressione Enter)<br>
           <br>
@@ -181,14 +66,14 @@
         <p>
           basta acessar um usuario:<br>
           <br>
-          $ssh mateus@localhost <br>
+          $ssh user@localhost <br>
           yes <br>
-          mateus <br>
+          user <br>
           <br>
           Digite "mutt" no terminal para abrir o client de email<br>
           <br>
           Ao abrir o Mutt pela primeira vez, será necessário criar o cache para armazenar os emails. <br>
-          /home/mateus/Mail does not exist. Create it? <b>Yes</b> <br>
+          /home/user/Mail does not exist. Create it? <b>Yes</b> <br>
           <br>
           Selecione o e-mail usando as setas
           <br>

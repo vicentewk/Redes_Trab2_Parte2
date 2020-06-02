@@ -190,6 +190,11 @@
 			É importante lembrar que, para a criação do CA, já devem estar criados o CSR e a chave primária. E para resetar o Nginx todos os arquivos já devem ter sido criados e o default configurado. Portanto para a execução destes comandos, os procedimentos anteriores devem estar prontos.<br><br>
 
 			Desta forma, o certificado SSL estará ativado para o domínio!<br><br><br>
+			Para testar é necessário utilizar dentro da box 
+			o comando "lynx https://localhost". É preciso confirmar o acesso com este comando, pois o certificado é auto assinado. 
+			Caso o acesso ocorra normalmente, o SSL está funcionando corretamente.
+			Também é possível realizar o teste no navegador, acessando o endereço "https://192.168.33.111". Porém, como é um certificado auto assinado,
+			 é necessário adicionar uma exceção de segurança no navegador para acesso a página.
 
 		</div>	
 

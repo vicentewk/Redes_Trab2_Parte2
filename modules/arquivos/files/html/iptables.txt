@@ -131,6 +131,8 @@
         up" dentro do diretório copiado.<br>
         Aguardar a máquina ser iniciada, conectar à ela utilizando o comando "vagrant ssh".<br>
         Assim que conectado, realizar o teste dos serviços.
+        Para realizar o teste é necessário utilizar dentro da box o comando "lynx g1.globo.com" para tentar acessar o site que está bloqueado no script do iptables.
+        Caso o acesso esteja bloqueado, o script está funcionando corretamente.
         </br></br></br>
 
       </section>
