@@ -28,12 +28,79 @@
   <div class="div-12 center ">
     <div class="div-12 task-description">
       <section class="justify">
+        <div class="div-12">
+          <img id="img-squid" src="../imagens/postfix.jpg">
+        </div>
+
+        <h3>Classes:</h3>
         
+        <p>
+          mailutils_postfix:<br>
+          instala o pacote mailutils, usado principalmente para testes sobre o postfix.
+        </p>
+        <p>
+          mutt_postfix:<br>
+          cliente de email utilizado.
+        <p>
+        <p>
+          nginx:<br>
+          sevidor web utilizado.
+        </p>
+        <p>
+          postfix:<br>
+          Gerenciador de email, para melhor organização a classe foi divididade em 3 sub classes(install, config e
+          service)
+        <ul>
+          <li>
+            -postfix::install:<br>
+            instala o pacote postfix.
+          </li>
+          <li>
+            -postfix::config: <br>
+            substitui os arquivos de configuração necessarios para execução do postfix. <br>
+            <ul>
+              <li>-main.cf: base da configuração do postfix, os principais atributos que podem vir a ser modificados
+                são:
+                <ul>
+                  <li>myhostname: conta que recebera email endereçados a "root@"</li>
+                  <li>mydestination:detinos de emails que o servidor postfix aceitará receber</li>
+                  <li>mailbox_size_limit:usado para limitar o tamanho das mensagens, 0 desativa a restrição de tamanho
+                  </li>
+                  <li>mynetworks:lista das redes para as quais seu servidor de e-mail está configurado para retransmitir
+                    as mensagens.</li>
+                </ul>
+              </li>
+              <li>
+                -virtual: mapea o endereço virtual para as contas apropriadas do servidor, cada linha contem um endereço
+                de email seguida de um espaço e o usuario para o qual o email deve ser entregue
+              </li>
+            </ul>
+          </li>
+          <li>
+            -postfix::service <br>
+            garante que o serviço está rodando e foi reiniciado <br>
+          </li>
+        </ul>
+        </p>
+
+        <p>
+          system-update: <br>
+          instala e garante a execução do system-update <br>
+        </p>
+        <p>
+          user: <br>
+          copia um arquivo ssh para a maquina e o executa <br>
+          -createUser: <br>
+          "sudo useradd -m -g users -p asdf X" cria um usuario "X" com uma senha criptografada "asdf" <br>
+          "sudo usermod -p $(openssl passwd -1 x) X" modifica a senha do usuario "X" para x <br>
+        </p>
+
+        </br></br>
 
         </br></br>
         <h4>Para enviar um email</h4>
         <p>
-        Os usuários são criados no arquivo "virtual" no diretório /etc/postfix/virtual.
+        Os usuários são criados no arquivo "virtual" no diretório /etc/postfix/.
         <br>Foram criados para teste os usuários:kassuelo, ranieri e vicente, sendo a senha o prório usuário.
           <br>
           Basta acessar um usuario:<br>

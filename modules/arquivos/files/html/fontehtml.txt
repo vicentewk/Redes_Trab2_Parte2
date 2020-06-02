@@ -114,7 +114,7 @@
         servidores proxy capazes de suportar HTTP, HTTPS, FTP e vários outros formatos.
       </p></br>
       <p class="justify">
-        om o Squid é possível configurar um servidor em Linux com possua acesso à internet, e a partir desse servidor
+        Com o Squid é possível configurar um servidor em Linux com possua acesso à internet, e a partir desse servidor
         permitir que máquinas clientes consigam acessar sites FTP e outras páginas na Web sem necessariamente ter
         conexão direta com a internet.
         Esse é um sistema altamente usado em empresas e em corporações onde é necessário um controle maior o acesso das
